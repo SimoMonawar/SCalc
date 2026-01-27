@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:SCalc"
+             x:Class="SCalc.MainPage"
+             x:DataType="local:MainPageViewModel"
+             Shell.BackgroundColor="{AppThemeBinding Light=LightGray, Dark=DarkGray}"
+             Shell.ForegroundColor="{AppThemeBinding Light=Black, Dark=White}">
+
+    <ContentPage.BindingContext>
+        <local:MainPageViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Order="Secondary" Text="History"/>
+        <ToolbarItem Order="Secondary" Text="Choose Theme"/>
+        <ToolbarItem Order="Secondary" Text="Privacy Policy"/>
+        <ToolbarItem Order="Secondary" Text="Send Feedback"/>
+
+        <ToolbarItem Order="Secondary" Text="About" Command="{Binding ShowAboutCommand}"/>
+    </ContentPage.ToolbarItems>
+
+    <Grid RowDefinitions="250,*">
+
+        <Border StrokeShape="RoundRectangle 0 0 25 25"
+                Stroke="Transparent"
+                Background="{AppThemeBinding Light=LightGray, Dark=DarkGray}"/>
+
+        <VerticalStackLayout Spacing="0" VerticalOptions="End" Padding="20,0">
+
+            <Entry Text="{Binding ExpressionDisplay}"
+                   IsReadOnly="True"
+                   HorizontalTextAlignment="End"
+                   FontSize="75"
+                   Background="Transparent"/>
+
+            <Label Text="{Binding ResultDisplay}"
+                   HorizontalTextAlignment="End"
+                   FontSize="60"
+                   TextColor="Gray"/>
+
+        </VerticalStackLayout>
+
+        <Grid Grid.Row="1"
+              RowDefinitions="*,*,*,*,*"
+              ColumnDefinitions="*,*,*,*"
+              Padding="10">
+
+            <Button Grid.Row="0" Grid.Column="0" 
+                    Text="AC"
+                    Style="{StaticResource OperatorButtonStyle}" 
+                    BackgroundColor="{StaticResource Customyellow}"
+                    Command="{Binding HandleButtonPressCommand}"
+                    CommandParameter="AC"/>
+
+            <Button Grid.Row="0" Grid.Column="1" 
+                    Text="( )"
+                    Style="{StaticResource OperatorButtonStyle}" 
+                    BackgroundColor="LightCyan"
+                    Command="{Binding HandleButtonPressCommand}"
+                    CommandParameter="( )"/>
+
+            <Button Grid.Row="0" Grid.Column="2" 
+                    Text="%"
+                    Style="{StaticResource OperatorButtonStyle}" 
+                    BackgroundColor="LightCyan"
+                    Command="{Binding HandleButtonPressCommand}"
+                    CommandParameter="%"/>
+
+            <Button Grid.Row="0" Grid.Column="3" 
+                    Text="÷"
+                    Style="{StaticResource OperatorButtonStyle}"
+                    FontSize="55"
+                    Command="{Binding HandleButtonPressCommand}"
+                    CommandParameter="÷"/>
+
+            <Button Grid.Row="1" Grid.Column="0" Text="7" Style="{StaticResource NummberButtonStyle}" 
+                    Command="{Binding HandleButtonPressCommand}" CommandParameter="7"/>
+            <Button Grid.Row="1" Grid.Column="1" Text="8" Style="{StaticResource NummberButtonStyle}" 
+                    Command="{Binding HandleButtonPressCommand}" CommandParameter="8"/>
+            <Button Grid.Row="1" Grid.Column="2" Text="9" Style="{StaticResource NummberButtonStyle}" 
+                    Command="{Binding HandleButtonPressCommand}" CommandParameter="9"/>
+            <Button Grid.Row="1" Grid.Column="3" Text="×" Style="{StaticResource OperatorButtonStyle}" 
+                    Command="{Binding HandleButtonPressCommand}" CommandParameter="×"/>
+
+            <Button Grid.Row="2" Grid.Column="0" Text="4" Style="{StaticResource NummberButtonStyle}" 
+                    Command="{Binding HandleButtonPressCommand}" CommandParameter="4"/>
+            <Button Grid.Row="2" Grid.Column="1" Text="5" Style="{StaticResource NummberButtonStyle}" 
+                    Command="{Binding HandleButtonPressCommand}" CommandParameter="5"/>
+            <Button Grid.Row="2" Grid.Column="2" Text="6" Style="{StaticResource NummberButtonStyle}" 
+                    Command="{Binding HandleButtonPressCommand}" CommandParameter="6"/>
+            <Button Grid.Row="2" Grid.Column="3" Text="-" Style="{StaticResource OperatorButtonStyle}" 
+                    Command="{Binding HandleButtonPressCommand}" CommandParameter="-"/>
+
+            <Button Grid.Row="3" Grid.Column="0" Text="1" Style="{StaticResource NummberButtonStyle}" 
+                    Command="{Binding HandleButtonPressCommand}" CommandParameter="1"/>
+            <Button Grid.Row="3" Grid.Column="1" Text="2" Style="{StaticResource NummberButtonStyle}" 
+                    Command="{Binding HandleButtonPressCommand}" CommandParameter="2"/>
+            <Button Grid.Row="3" Grid.Column="2" Text="3" Style="{StaticResource NummberButtonStyle}" 
+                    Command="{Binding HandleButtonPressCommand}" CommandParameter="3"/>
+            <Button Grid.Row="3" Grid.Column="3" Text="+" Style="{StaticResource OperatorButtonStyle}" 
+                    Command="{Binding HandleButtonPressCommand}" CommandParameter="+"/>
+
+            <Button Grid.Row="4" Grid.Column="0" Text="0" Style="{StaticResource NummberButtonStyle}" 
+                    Command="{Binding HandleButtonPressCommand}" CommandParameter="0"/>
+            <Button Grid.Row="4" Grid.Column="1" Text="." Style="{StaticResource NummberButtonStyle}" 
+                    Command="{Binding HandleButtonPressCommand}" CommandParameter="."/>
+
+            <Button Grid.Row="4" Grid.Column="2" 
+                    Text="DE"
+                    Style="{StaticResource NummberButtonStyle}"
+                    TextColor="Red"
+                    Command="{Binding HandleButtonPressCommand}"
+                    CommandParameter="DE"/>
+
+            <Button Grid.Row="4" Grid.Column="3" 
+                    Text="="
+                    Style="{StaticResource OperatorButtonStyle}"
+                    BackgroundColor="LightSkyBlue"
+                    Command="{Binding HandleButtonPressCommand}"
+                    CommandParameter="="/>
+
+        </Grid>
+    </Grid>
+</ContentPage>
